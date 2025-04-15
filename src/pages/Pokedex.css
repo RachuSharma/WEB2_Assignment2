@@ -1,0 +1,55 @@
+/* Pokedex.css */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #222;
+  }
+  
+  .card img {
+    height: 70px;
+    margin-top: 0.5rem;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+  
+  .pagination button {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #555;
+  }
+  
