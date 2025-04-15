@@ -68,65 +68,36 @@ button:focus-visible {
 }
 /* Custom Pink Navbar */
 .custom-navbar {
-  background-color: #f1c7ee; /* hot pink */
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f4c2f0;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-.nav-content {
+.navbar-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 5rem;
-  max-width: 1000px;
-  margin: auto;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.brand {
-  font-weight: bold;
+.navbar-brand {
   font-size: 1.5rem;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
+  font-weight: bold;
 }
 
 .nav-links a {
-  color: rgb(19, 1, 1);
-  margin: 0 1rem;
+  margin-left: 2rem;
   text-decoration: none;
+  color: #000;
   font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-links a::after {
-  content: '';
-  height: 2px;
-  background: rgb(9, 5, 237);
-  width: 0;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #160fe6; /* on hover */
+  color: #6c3483;
+  text-decoration: underline;
 }
-.custom-navbar {
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-
-.detail-card {
-  background-color: #fff8fc;
-  max-width: 400px;
-  margin: auto;
-  border: 1px solid #ffd6e6;
-}
-
-
-
