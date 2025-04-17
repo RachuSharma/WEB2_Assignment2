@@ -12,19 +12,20 @@ function Pagination({ offset, setOffset, limit }) {
   return (
     <div className="d-flex justify-content-center my-4 gap-3">
       <button
-        className="btn btn-outline-primary"
-        onClick={handlePrevious}
-        disabled={offset === 0}
-      >
-        ← Previous
-      </button>
+  className="pagination-button"
+  onClick={handlePrevious}
+  disabled={offset === 0}
+>
+  ← Previous
+</button>
 
-      <button
-        className="btn btn-outline-primary"
-        onClick={handleNext}
-      >
-        Next →
-      </button>
+<button
+  className="pagination-button"
+  onClick={handleNext}
+>
+  Next →
+</button>
+
     </div>
   );
 }

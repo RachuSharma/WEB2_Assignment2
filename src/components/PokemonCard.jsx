@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function PokemonCard({ name, url, index }) {
+function PokemonCard({ name, url, index, onClick }) {
   const [sprite, setSprite] = useState('');
   const [id, setId] = useState('');
   const [type, setType] = useState('');
@@ -17,26 +16,36 @@ function PokemonCard({ name, url, index }) {
       });
   }, [url]);
 
-  const bgColor = getBackgroundColor(index); 
-  //  new line here
+  const bgColor = getBackgroundColor(index);
   function getBackgroundColor(index) {
-    const colors = ['#ffe4f0', '#ffeccf', '#dfffe0', '#e0f0ff']; // pink, orange, green, blue
+    const colors = ['#ffe4f0', '#ffeccf', '#dfffe0', '#e0f0ff'];
     return colors[index % colors.length];
   }
 
   return (
-    <Link to={`/pokemon/${name}`} className="text-decoration-none">
-<div
-  className="card text-center shadow-sm"
-  style={{ backgroundColor: bgColor, borderRadius: '12px' }}
->
-        <div className="card-body">
-          <small className="text-muted">#{id}</small>
-          <h5 className="card-title text-capitalize">{name}</h5>
-          {sprite && <img src={sprite} alt={name} className="img-fluid" style={{ height: '70px' }} />}
-        </div>
+    <div
+      className="card text-center shadow-sm"
+      style={{
+        backgroundColor: bgColor,
+        borderRadius: '12px',
+        cursor: 'pointer',
+        transition: 'transform 0.2s',
+      }}
+      onClick={() => onClick(name)}
+    >
+      <div className="card-body">
+        <small className="text-muted">#{id}</small>
+        <h5 className="card-title text-capitalize">{name}</h5>
+        {sprite && (
+          <img
+            src={sprite}
+            alt={name}
+            className="img-fluid"
+            style={{ height: '70px' }}
+          />
+        )}
       </div>
-    </Link>
+    </div>
   );
 }
 

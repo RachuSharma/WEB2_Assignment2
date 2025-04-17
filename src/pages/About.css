@@ -1,0 +1,38 @@
+.about-page {
+    padding: 2rem;
+    background-color: #fff0f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+    color: #4a1942;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Avenir', sans-serif;
+  }
+  
+  .intro {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #d63384;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: shimmer 3s ease-in-out infinite, floatSoft 5s ease-in-out infinite;
+  }
+  
+  .about-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+  }
+  
+  /* Optional cute shimmer + float effect */
+  @keyframes shimmer {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  }
+  @keyframes floatSoft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  

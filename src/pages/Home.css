@@ -1,44 +1,160 @@
 .homepage {
-    height: 100vh;
-    background: linear-gradient(to bottom right, #ffe4f0, #e0f0ff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background: #fffafc;
+}
+
+/* New wrapper for background elements */
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.background-layer::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25); /* 👈 light pink overlay */
+  backdrop-filter: blur(0px);           /* 👈 blurring effect */
+  z-index: 1;
+}
+h1.main-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #ffffff; /* soft pink */
+  text-shadow: 4px 4px  #3f1ae4aa; /* soft purple shadow */
+}
+
+/* Make Mew image fill background and scale nicely */
+.mew-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 👈 makes it stretch and fill */
+  opacity: 0.40; /* tweak this if it's too strong/weak */
+  animation: floatMew 20s ease-in-out infinite;
+}
+
+
+/* Optional: gentle float */
+@keyframes floatMew {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Bring content on top */
+.home-top,
+#pokedex-list {
+  position: relative;
+  z-index: 1;
+}
+
+.mew-pic {
+  width: 180px;
+  height: auto;
+  animation: float 3s ease-in-out infinite, glowPulse 2s infinite;
+  filter: drop-shadow(0 0 20px #ffb4bfcc); /* soft pink glow */
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.mew-pic:hover {
+  transform: scale(1.08) rotate(5deg);
+}
+
+/* Glow pulsing animation */
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 5px #ffb6c1aa);
   }
-  
-  .home-content {
-    max-width: 600px;
-    background: white;
-    padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  50% {
+    filter: drop-shadow(0 0 20px #ff69b4);
   }
-  
-  .home-content h1 {
-    font-size: 2.8rem;
-    color: #d63384;
-    margin-bottom: 1rem;
+  100% {
+    filter: drop-shadow(0 0 5px #ffb6c1aa);
   }
-  
-  .home-content p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 2rem;
-  }
-  
-  .btn-start {
-    background-color: #d63384;
-    color: white;
-    padding: 0.8rem 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-start:hover {
-    background-color: #c0186b;
-  }
-  
+}
+
+/* Float animation stays the same */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.subtitle.mew-button {
+  all: unset; /* Reset all styles */
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #d63384;
+  text-shadow: 1px 1px 2px #3f1ae4aa;
+  animation: shimmer 3s ease-in-out infinite, floatSoft 5s ease-in-out infinite;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  background: linear-gradient(to right, #fff0f5, #ffe4ec);
+  border-radius: 12px;
+  box-shadow: 0 0 12px #000000aa;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.subtitle.mew-button:hover {
+  transform: scale(1.05);
+}
+
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* Gentle float */
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.pagination-button {
+  background-color: #90f078;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  padding: 10px 20px;
+  margin: 0 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(209, 204, 204, 0.4);
+}
+
+.pagination-button:hover {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transform: scale(1.05);
+}
+
+.pagination-button:disabled {
+  background-color: #df0e38;
+  color: #ffffff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.description {
+  font-size: 1.1rem;
+  color: #f8fffa;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import PokemonCard from '../components/PokemonCard';
 import Pagination from '../components/Pagination';
 import './Pokedex.css'; // Optional if you're using custom styles
+import PokemonModal from '../components/PokemonModal';
+
 
 const LIMIT = 12;
 
@@ -10,6 +12,8 @@ function Pokedex() {
   const [offset, setOffset] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
 
   useEffect(() => {
     setLoading(true);
@@ -42,7 +46,13 @@ function Pokedex() {
         <div className="row g-4">
           {pokemonList.map((pokemon, i) => (
   <div key={pokemon.name} className="col-6 col-md-4 col-lg-3">
-    <PokemonCard name={pokemon.name} url={pokemon.url} index={offset + i} />
+   <PokemonCard
+  name={pokemon.name}
+  url={pokemon.url}
+  index={offset + i}
+  onClick={() => setSelectedPokemon(pokemon.name)} // 👈 show modal
+/>
+
   </div>
 ))}
 
@@ -50,7 +60,16 @@ function Pokedex() {
       )}
   
       {<Pagination offset={offset} setOffset={setOffset} limit={LIMIT} /> }
+      {selectedPokemon && (
+  <PokemonModal
+    name={selectedPokemon}
+    onClose={() => setSelectedPokemon(null)}
+  />
+)}
+
     </div>
+    
+    
   );
   
 }
